@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://dbyaoasfub1fb"]
+
+[sub_resource type="Gradient" id="Gradient_81s0h"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wi0xq"]
+gradient = SubResource("Gradient_81s0h")
+
+[sub_resource type="Curve" id="Curve_tmjhl"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0044911993, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_r50o0"]
+curve = SubResource("Curve_tmjhl")
+
+[sub_resource type="Curve" id="Curve_j4bao"]
+_data = [Vector2(0, 1), 0.0, -1.0810497, 0, 0, Vector2(1, 0.5049669), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_w1h31"]
+curve = SubResource("Curve_j4bao")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gdx82"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 250.0
+scale_curve = SubResource("CurveTexture_w1h31")
+alpha_curve = SubResource("CurveTexture_r50o0")
+
+[node name="Points" type="GPUParticles2D" unique_id=1976605348]
+amount = 1
+texture = SubResource("GradientTexture2D_wi0xq")
+process_material = SubResource("ParticleProcessMaterial_gdx82")

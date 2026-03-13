@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Rod" format=3 uid="uid://cbgw2sfnqfd7y"]
+
+[ext_resource type="Script" uid="uid://bq0snpnov4ghe" path="res://UI/Shop/item_resource.gd" id="1_ic0bp"]
+[ext_resource type="Texture2D" uid="uid://ogetpahcf0u1" path="res://Assets/Rods/ice.png" id="2_bqgos"]
+
+[resource]
+script = ExtResource("1_ic0bp")
+item_name = "Ice Rod"
+cost = 10000
+texture = ExtResource("2_bqgos")
+luck = 1.0
+line_length = 1800.0
+sink_speed = 290.0
+tension_bonus = 0.35
+info = "[color=#1E90FF]Blue[/color]            25%
+[color=#FFA500]Orange[/color]       45%
+[color=#FF0000]Red[/color]              30%
+"
+metadata/_custom_type_script = "uid://bq0snpnov4ghe"

@@ -1,0 +1,192 @@
+[gd_scene load_steps=18 format=3 uid="uid://dgc0aodyofct1"]
+
+[ext_resource type="Script" uid="uid://dfmkfrokewk2l" path="res://UI/Shop/shop.gd" id="1_kyj5a"]
+[ext_resource type="Shader" uid="uid://ds25pnymew4xa" path="res://Panning.gdshader" id="2_l4q0s"]
+[ext_resource type="Texture2D" uid="uid://dfo54k7k0asxt" path="res://UI/Sprites/ShopBG.png" id="3_pagdw"]
+[ext_resource type="Texture2D" uid="uid://dytuihwuuok52" path="res://UI/Sprites/Arrow.png" id="4_eeyqd"]
+[ext_resource type="Script" uid="uid://cv0fvqe65ked1" path="res://UI/Shop/shop_items.gd" id="4_eo7k6"]
+[ext_resource type="Theme" uid="uid://dwo3us14kl4ok" path="res://UI.tres" id="5_eeyqd"]
+[ext_resource type="Texture2D" uid="uid://bc7b4i4sl6qpv" path="res://UI/Sprites/ArrowPress.png" id="5_sar1i"]
+[ext_resource type="Texture2D" uid="uid://blosq7mippnpg" path="res://Assets/Button.png" id="8_pagdw"]
+[ext_resource type="Texture2D" uid="uid://cytc5lw6f8jv" path="res://UI/Sprites/Money.png" id="9_eo7k6"]
+[ext_resource type="FontFile" uid="uid://6cqdfbgomgma" path="res://Assets/Baloo2-ExtraBold.ttf" id="10_glx3d"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eo7k6"]
+shader = ExtResource("2_l4q0s")
+shader_parameter/pan_speed = Vector2(-0.2, 0.2)
+shader_parameter/tile_scale = Vector2(3, 3)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vfljs"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l4q0s"]
+texture = ExtResource("4_eeyqd")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pagdw"]
+texture = ExtResource("5_sar1i")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4qhf5"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eo7k6"]
+texture = ExtResource("4_eeyqd")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_glx3d"]
+texture = ExtResource("5_sar1i")
+
+[node name="Shop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kyj5a")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -2
+material = SubResource("ShaderMaterial_eo7k6")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_pagdw")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Container" type="MarginContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/margin_top = 200
+
+[node name="ShopContainer" type="ScrollContainer" parent="VBoxContainer/Container"]
+unique_name_in_owner = true
+layout_mode = 2
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 0
+
+[node name="ShopItems" type="HBoxContainer" parent="VBoxContainer/Container/ShopContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 1484)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("4_eo7k6")
+
+[node name="Container2" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 180
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 180
+theme_override_constants/margin_bottom = 54
+
+[node name="Back" type="Button" parent="VBoxContainer/Container2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("5_eeyqd")
+theme_override_constants/outline_size = 42
+theme_override_font_sizes/font_size = 85
+text = "Back"
+
+[node name="LeftArrow" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 150.0
+offset_top = -50.0
+offset_right = 250.0
+offset_bottom = 50.0
+grow_vertical = 2
+scale = Vector2(-1, 1)
+size_flags_horizontal = 3
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vfljs")
+theme_override_styles/hover = SubResource("StyleBoxTexture_l4q0s")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_pagdw")
+theme_override_styles/normal = SubResource("StyleBoxTexture_l4q0s")
+
+[node name="RightArrow" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -50.0
+offset_right = -60.0
+offset_bottom = 50.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4qhf5")
+theme_override_styles/hover = SubResource("StyleBoxTexture_eo7k6")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_glx3d")
+theme_override_styles/normal = SubResource("StyleBoxTexture_eo7k6")
+
+[node name="MoneyLabel" type="MarginContainer" parent="."]
+z_index = 18
+layout_mode = 0
+offset_right = 316.0
+offset_bottom = 126.0
+theme_override_constants/margin_left = 35
+theme_override_constants/margin_top = 35
+
+[node name="HBoxContainer" type="NinePatchRect" parent="MoneyLabel"]
+layout_mode = 2
+texture = ExtResource("8_pagdw")
+
+[node name="TextureRect" type="TextureRect" parent="MoneyLabel/HBoxContainer"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -181.05
+offset_top = -7.5
+offset_right = -11.05
+offset_bottom = 115.5
+grow_horizontal = 0
+grow_vertical = 2
+rotation = -0.565487
+texture = ExtResource("9_eo7k6")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="MoneyLabel/HBoxContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 10
+
+[node name="MoneyLabel" type="Label" parent="MoneyLabel/HBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.952941, 0.952941, 0.952941, 1)
+theme_override_colors/font_outline_color = Color(0.803922, 0.556863, 0.392157, 1)
+theme_override_constants/outline_size = 23
+theme_override_fonts/font = ExtResource("10_glx3d")
+theme_override_font_sizes/font_size = 39
+text = "10000"
+vertical_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/Container2/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="LeftArrow" to="." method="_on_left_arrow_pressed"]
+[connection signal="pressed" from="RightArrow" to="." method="_on_right_arrow_pressed"]

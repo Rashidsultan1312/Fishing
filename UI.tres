@@ -1,0 +1,28 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://dwo3us14kl4ok"]
+
+[ext_resource type="FontFile" uid="uid://6cqdfbgomgma" path="res://Assets/Baloo2-ExtraBold.ttf" id="1_w50aj"]
+[ext_resource type="Texture2D" uid="uid://blosq7mippnpg" path="res://Assets/Button.png" id="2_1iots"]
+[ext_resource type="Texture2D" uid="uid://ow6y8ffx0g8s" path="res://Assets/Button_Pressed.png" id="3_w2jbw"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6r4ue"]
+texture = ExtResource("3_w2jbw")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_focus"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_atr4y"]
+texture = ExtResource("2_1iots")
+
+[resource]
+Button/colors/font_color = Color(0.952941, 0.952941, 0.952941, 1)
+Button/colors/font_outline_color = Color(0.803922, 0.556863, 0.392157, 1)
+Button/constants/outline_size = 10
+Button/font_sizes/font_size = 21
+Button/fonts/font = ExtResource("1_w50aj")
+Button/styles/disabled = SubResource("StyleBoxTexture_6r4ue")
+Button/styles/focus = SubResource("StyleBoxEmpty_focus")
+Button/styles/hover = SubResource("StyleBoxTexture_6r4ue")
+Button/styles/normal = SubResource("StyleBoxTexture_atr4y")
+Button/styles/pressed = SubResource("StyleBoxTexture_6r4ue")
+Label/colors/font_color = Color(0.952941, 0.952941, 0.952941, 1)
+Label/colors/font_outline_color = Color(0.803922, 0.556863, 0.392157, 1)
+Label/fonts/font = ExtResource("1_w50aj")

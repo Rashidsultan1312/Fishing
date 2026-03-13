@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Rod" format=3 uid="uid://dferb52rosn57"]
+
+[ext_resource type="Script" uid="uid://bq0snpnov4ghe" path="res://UI/Shop/item_resource.gd" id="1_od3ab"]
+[ext_resource type="Texture2D" uid="uid://bkrldtfh8mcto" path="res://Assets/Rods/amethyst.png" id="2_imkrj"]
+
+[resource]
+script = ExtResource("1_od3ab")
+item_name = "Amethyst Rod"
+cost = 7500
+texture = ExtResource("2_imkrj")
+luck = 0.857
+line_length = 1600.0
+sink_speed = 270.0
+tension_bonus = 0.3
+info = "[color=#1E90FF]Blue[/color]            32%
+[color=#FFA500]Orange[/color]       42%
+[color=#FF0000]Red[/color]              26%
+"
+metadata/_custom_type_script = "uid://bq0snpnov4ghe"

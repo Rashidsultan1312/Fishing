@@ -1,0 +1,160 @@
+[gd_scene format=3 uid="uid://dy8ci57dh4jv5"]
+
+[ext_resource type="Shader" uid="uid://ds25pnymew4xa" path="res://Panning.gdshader" id="1_wgjsl"]
+[ext_resource type="Texture2D" uid="uid://dfo54k7k0asxt" path="res://UI/Sprites/ShopBG.png" id="2_hnc8t"]
+[ext_resource type="Script" uid="uid://buenkk1xb5pwh" path="res://UI/settings.gd" id="3_lgafb"]
+[ext_resource type="Theme" uid="uid://dwo3us14kl4ok" path="res://UI.tres" id="4_ww78k"]
+[ext_resource type="Texture2D" uid="uid://cy4xckvywsom" path="res://UI/Sprites/Scroll.png" id="5_ww78k"]
+[ext_resource type="Texture2D" uid="uid://cf2rdot1e1upf" path="res://UI/Sprites/progressBar.png" id="6_q4n24"]
+[ext_resource type="Texture2D" uid="uid://cpelkub3a67oi" path="res://UI/Sprites/FilledProgessBar.png" id="7_ww78k"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lgafb"]
+shader = ExtResource("1_wgjsl")
+shader_parameter/pan_speed = Vector2(-0.2, 0.2)
+shader_parameter/tile_scale = Vector2(3, 3)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ba51m"]
+content_margin_top = 40.0
+texture = ExtResource("6_q4n24")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q4n24"]
+texture = ExtResource("7_ww78k")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qrduu"]
+texture = ExtResource("7_ww78k")
+
+[node name="Settings" type="Control" unique_id=771409780]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1195181688]
+material = SubResource("ShaderMaterial_lgafb")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_hnc8t")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1540423066]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 180
+theme_override_constants/margin_top = 180
+theme_override_constants/margin_right = 180
+theme_override_constants/margin_bottom = 180
+
+[node name="SettingsContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1477264674]
+layout_mode = 2
+script = ExtResource("3_lgafb")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/SettingsContainer" unique_id=693649698]
+layout_mode = 2
+theme_override_constants/margin_bottom = 70
+
+[node name="Settings" type="Label" parent="MarginContainer/SettingsContainer/MarginContainer" unique_id=2083629577]
+layout_mode = 2
+size_flags_stretch_ratio = 3.19
+theme = ExtResource("4_ww78k")
+theme_override_constants/outline_size = 85
+theme_override_font_sizes/font_size = 120
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SFXLabel" type="Label" parent="MarginContainer/SettingsContainer" unique_id=256575666]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("4_ww78k")
+theme_override_constants/outline_size = 26
+theme_override_font_sizes/font_size = 46
+text = "SFX"
+vertical_alignment = 1
+
+[node name="SFX" type="HSlider" parent="MarginContainer/SettingsContainer" unique_id=1040176766]
+layout_mode = 2
+theme_override_constants/center_grabber = 1
+theme_override_icons/grabber = ExtResource("5_ww78k")
+theme_override_icons/grabber_highlight = ExtResource("5_ww78k")
+theme_override_icons/grabber_disabled = ExtResource("5_ww78k")
+theme_override_styles/slider = SubResource("StyleBoxTexture_ba51m")
+theme_override_styles/grabber_area = SubResource("StyleBoxTexture_q4n24")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_qrduu")
+value = 50.0
+
+[node name="MusicLabel" type="Label" parent="MarginContainer/SettingsContainer" unique_id=6387570]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("4_ww78k")
+theme_override_constants/outline_size = 26
+theme_override_font_sizes/font_size = 46
+text = "Music"
+vertical_alignment = 1
+
+[node name="Music" type="HSlider" parent="MarginContainer/SettingsContainer" unique_id=22731301]
+layout_mode = 2
+theme_override_constants/center_grabber = 1
+theme_override_icons/grabber = ExtResource("5_ww78k")
+theme_override_icons/grabber_highlight = ExtResource("5_ww78k")
+theme_override_icons/grabber_disabled = ExtResource("5_ww78k")
+theme_override_styles/slider = SubResource("StyleBoxTexture_ba51m")
+theme_override_styles/grabber_area = SubResource("StyleBoxTexture_q4n24")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_qrduu")
+value = 50.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/SettingsContainer" unique_id=1970553240]
+visible = false
+layout_mode = 2
+
+[node name="Music" type="CheckBox" parent="MarginContainer/SettingsContainer/HBoxContainer" unique_id=52401020]
+layout_mode = 2
+
+[node name="Vibration" type="CheckBox" parent="MarginContainer/SettingsContainer/HBoxContainer" unique_id=1923834721]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1771888195]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Container" type="MarginContainer" parent="VBoxContainer" unique_id=158759823]
+custom_minimum_size = Vector2(0, 1684)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 200
+
+[node name="Container2" type="MarginContainer" parent="VBoxContainer" unique_id=1929554984]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 180
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 180
+theme_override_constants/margin_bottom = 54
+
+[node name="Back" type="Button" parent="VBoxContainer/Container2" unique_id=1704141064]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("4_ww78k")
+theme_override_constants/outline_size = 42
+theme_override_font_sizes/font_size = 82
+text = "Back"
+
+[connection signal="value_changed" from="MarginContainer/SettingsContainer/SFX" to="MarginContainer/SettingsContainer" method="_on_volume_value_changed"]
+[connection signal="value_changed" from="MarginContainer/SettingsContainer/Music" to="MarginContainer/SettingsContainer" method="_on_music_value_changed"]
+[connection signal="toggled" from="MarginContainer/SettingsContainer/HBoxContainer/Vibration" to="MarginContainer/SettingsContainer" method="_on_vibration_toggled"]
+[connection signal="pressed" from="VBoxContainer/Container2/Back" to="MarginContainer/SettingsContainer" method="_on_back_pressed"]

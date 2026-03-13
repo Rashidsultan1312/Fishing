@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="LocationData" format=3]
+
+[ext_resource type="Script" path="res://MainGame/Data/location_data.gd" id="1"]
+[ext_resource type="Texture2D" path="res://Assets/Locations/ArcticLocation.png" id="2"]
+[ext_resource type="Texture2D" path="res://Assets/Backgrounds/ArcticBG.png" id="3"]
+
+[resource]
+script = ExtResource("1")
+location_id = "arctic"
+location_name = "Arctic Ice"
+description = "Freezing waters beneath the ice. Only the toughest fish survive here."
+difficulty_label = "Hard"
+order = 2
+bg_texture = ExtResource("2")
+game_bg_texture = ExtResource("3")
+use_shader_bg = false
+sky_top = Color(0.75, 0.85, 0.95, 1)
+sky_bottom = Color(0.5, 0.6, 0.75, 1)
+water_color = Color(0.3, 0.45, 0.6, 1)
+terrain_color = Color(0.85, 0.9, 0.95, 1)
+color_surface = Color(0.4, 0.7, 0.85, 1)
+color_deep = Color(0.1, 0.15, 0.25, 1)
+ray_intensity = 0.08
+max_depth = 3000.0
+bubble_color = Color(0.85, 0.9, 1.0, 0.25)
+reel_bg_top = Color(0.15, 0.25, 0.35, 0.92)
+reel_bg_bottom = Color(0.05, 0.08, 0.15, 0.96)
+reward_multiplier = 2.0
+fish_speed_mult = 1.4
+spawn_interval = 1.1
+fish_ids = ["05_shuka", "06_som", "07_sterlyad", "a01_arctic_char", "a02_ice_cod", "a03_narwhal"]
+unlock_type = "fish_caught"
+unlock_value = 30

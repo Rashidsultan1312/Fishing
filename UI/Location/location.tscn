@@ -1,0 +1,176 @@
+[gd_scene load_steps=4 format=3 uid="uid://b28l8gujf6nxv"]
+
+[ext_resource type="Script" uid="uid://cs5ibh8nwj0q2" path="res://UI/Location/location.gd" id="1_jl2dr"]
+[ext_resource type="Texture2D" uid="uid://b5r30kbkbypef" path="res://Assets/Locations/SakuraLocation.png" id="2_na0t5"]
+[ext_resource type="FontFile" uid="uid://6cqdfbgomgma" path="res://Assets/Baloo2-ExtraBold.ttf" id="4_baloo"]
+
+[node name="Location" type="Control"]
+custom_minimum_size = Vector2(1080, 1330)
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 0
+script = ExtResource("1_jl2dr")
+
+[node name="Texture" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.4
+anchor_right = 0.5
+anchor_bottom = 0.4
+offset_left = -420.0
+offset_top = -420.0
+offset_right = 420.0
+offset_bottom = 420.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_na0t5")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="InfoOverlay" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="NameLabel" type="Label" parent="InfoOverlay"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -440.0
+offset_top = -260.0
+offset_right = 440.0
+offset_bottom = -165.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.953, 0.953, 0.953, 1)
+theme_override_colors/font_outline_color = Color(0.12, 0.08, 0.04, 0.95)
+theme_override_constants/outline_size = 32
+theme_override_fonts/font = ExtResource("4_baloo")
+theme_override_font_sizes/font_size = 68
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DiffBadge" type="Label" parent="InfoOverlay"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -440.0
+offset_top = -150.0
+offset_right = -20.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.3, 0.85, 0.4, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.9)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("4_baloo")
+theme_override_font_sizes/font_size = 48
+text = "Easy"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MultBadge" type="Label" parent="InfoOverlay"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -150.0
+offset_right = 440.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 0.92, 0.45, 1)
+theme_override_colors/font_outline_color = Color(0.2, 0.15, 0, 0.9)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("4_baloo")
+theme_override_font_sizes/font_size = 48
+text = "1.0x"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Particles" type="CPUParticles2D" parent="."]
+position = Vector2(540, 400)
+amount = 20
+lifetime = 4.0
+speed_scale = 0.8
+emission_shape = 3
+emission_rect_extents = Vector2(450, 500)
+direction = Vector2(0, 1)
+spread = 25.0
+gravity = Vector2(0, 30)
+initial_velocity_min = 10.0
+initial_velocity_max = 30.0
+angular_velocity_min = -30.0
+angular_velocity_max = 30.0
+scale_amount_min = 3.0
+scale_amount_max = 6.0
+color = Color(1, 0.75, 0.85, 0.6)
+
+[node name="LockOverlay" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.02, 0.02, 0.06, 0.75)
+
+[node name="LockVBox" type="VBoxContainer" parent="LockOverlay"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -180.0
+offset_right = 300.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="LockIcon" type="Label" parent="LockOverlay/LockVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.7, 0.3, 1)
+theme_override_colors/font_outline_color = Color(0.15, 0.08, 0, 0.9)
+theme_override_constants/outline_size = 22
+theme_override_fonts/font = ExtResource("4_baloo")
+theme_override_font_sizes/font_size = 72
+text = "LOCKED"
+horizontal_alignment = 1
+
+[node name="LockReq" type="Label" parent="LockOverlay/LockVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.92, 0.8, 1)
+theme_override_colors/font_outline_color = Color(0.1, 0.06, 0, 0.9)
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("4_baloo")
+theme_override_font_sizes/font_size = 48
+horizontal_alignment = 1
+
+[node name="LockProgress" type="Label" parent="LockOverlay/LockVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.8, 0.85, 0.8)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.6)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("4_baloo")
+theme_override_font_sizes/font_size = 34
+horizontal_alignment = 1

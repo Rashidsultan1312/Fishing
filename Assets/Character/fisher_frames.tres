@@ -1,0 +1,303 @@
+[gd_resource type="SpriteFrames" format=3]
+
+[ext_resource type="Texture2D" path="res://Assets/Character/Idle/frame_0000.png" id="idle_0"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Idle/frame_0001.png" id="idle_1"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Idle/frame_0002.png" id="idle_2"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Idle/frame_0003.png" id="idle_3"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Idle/frame_0004.png" id="idle_4"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Idle/frame_0005.png" id="idle_5"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Idle/frame_0006.png" id="idle_6"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Idle/frame_0007.png" id="idle_7"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Idle/frame_0008.png" id="idle_8"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Idle/frame_0009.png" id="idle_9"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Idle/frame_0010.png" id="idle_10"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Idle/frame_0011.png" id="idle_11"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Idle/frame_0012.png" id="idle_12"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Idle/frame_0013.png" id="idle_13"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Idle/frame_0014.png" id="idle_14"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Idle/frame_0015.png" id="idle_15"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Idle/frame_0016.png" id="idle_16"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Idle/frame_0017.png" id="idle_17"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Idle/frame_0018.png" id="idle_18"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Idle/frame_0019.png" id="idle_19"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Idle/frame_0020.png" id="idle_20"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Idle/frame_0021.png" id="idle_21"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Idle/frame_0022.png" id="idle_22"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Idle/frame_0023.png" id="idle_23"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Idle/frame_0024.png" id="idle_24"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Idle/frame_0025.png" id="idle_25"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Idle/frame_0026.png" id="idle_26"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Idle/frame_0027.png" id="idle_27"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Idle/frame_0028.png" id="idle_28"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Idle/frame_0029.png" id="idle_29"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Idle/frame_0030.png" id="idle_30"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Idle/frame_0031.png" id="idle_31"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Idle/frame_0032.png" id="idle_32"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Idle/frame_0033.png" id="idle_33"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Idle/frame_0034.png" id="idle_34"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Idle/frame_0035.png" id="idle_35"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Reel/frame_0000.png" id="reel_0"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Reel/frame_0001.png" id="reel_1"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Reel/frame_0002.png" id="reel_2"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Reel/frame_0003.png" id="reel_3"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Reel/frame_0004.png" id="reel_4"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Reel/frame_0005.png" id="reel_5"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Reel/frame_0006.png" id="reel_6"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Reel/frame_0007.png" id="reel_7"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Reel/frame_0008.png" id="reel_8"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Reel/frame_0009.png" id="reel_9"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Reel/frame_0010.png" id="reel_10"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Reel/frame_0011.png" id="reel_11"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Reel/frame_0012.png" id="reel_12"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Reel/frame_0013.png" id="reel_13"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Reel/frame_0014.png" id="reel_14"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Reel/frame_0015.png" id="reel_15"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Reel/frame_0016.png" id="reel_16"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Reel/frame_0017.png" id="reel_17"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Reel/frame_0018.png" id="reel_18"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Reel/frame_0019.png" id="reel_19"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Reel/frame_0020.png" id="reel_20"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Reel/frame_0021.png" id="reel_21"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Reel/frame_0022.png" id="reel_22"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Reel/frame_0023.png" id="reel_23"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Reel/frame_0024.png" id="reel_24"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Reel/frame_0025.png" id="reel_25"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Reel/frame_0026.png" id="reel_26"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Reel/frame_0027.png" id="reel_27"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Reel/frame_0028.png" id="reel_28"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Reel/frame_0029.png" id="reel_29"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Reel/frame_0030.png" id="reel_30"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Reel/frame_0031.png" id="reel_31"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Reel/frame_0032.png" id="reel_32"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Reel/frame_0033.png" id="reel_33"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Reel/frame_0034.png" id="reel_34"]
+[ext_resource type="Texture2D" path="res://Assets/Character/Reel/frame_0035.png" id="reel_35"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("idle_0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("idle_1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("idle_2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("idle_3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("idle_4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("idle_5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("idle_6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("idle_7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("idle_8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("idle_9")
+}, {
+"duration": 1.0,
+"texture": ExtResource("idle_10")
+}, {
+"duration": 1.0,
+"texture": ExtResource("idle_11")
+}, {
+"duration": 1.0,
+"texture": ExtResource("idle_12")
+}, {
+"duration": 1.0,
+"texture": ExtResource("idle_13")
+}, {
+"duration": 1.0,
+"texture": ExtResource("idle_14")
+}, {
+"duration": 1.0,
+"texture": ExtResource("idle_15")
+}, {
+"duration": 1.0,
+"texture": ExtResource("idle_16")
+}, {
+"duration": 1.0,
+"texture": ExtResource("idle_17")
+}, {
+"duration": 1.0,
+"texture": ExtResource("idle_18")
+}, {
+"duration": 1.0,
+"texture": ExtResource("idle_19")
+}, {
+"duration": 1.0,
+"texture": ExtResource("idle_20")
+}, {
+"duration": 1.0,
+"texture": ExtResource("idle_21")
+}, {
+"duration": 1.0,
+"texture": ExtResource("idle_22")
+}, {
+"duration": 1.0,
+"texture": ExtResource("idle_23")
+}, {
+"duration": 1.0,
+"texture": ExtResource("idle_24")
+}, {
+"duration": 1.0,
+"texture": ExtResource("idle_25")
+}, {
+"duration": 1.0,
+"texture": ExtResource("idle_26")
+}, {
+"duration": 1.0,
+"texture": ExtResource("idle_27")
+}, {
+"duration": 1.0,
+"texture": ExtResource("idle_28")
+}, {
+"duration": 1.0,
+"texture": ExtResource("idle_29")
+}, {
+"duration": 1.0,
+"texture": ExtResource("idle_30")
+}, {
+"duration": 1.0,
+"texture": ExtResource("idle_31")
+}, {
+"duration": 1.0,
+"texture": ExtResource("idle_32")
+}, {
+"duration": 1.0,
+"texture": ExtResource("idle_33")
+}, {
+"duration": 1.0,
+"texture": ExtResource("idle_34")
+}, {
+"duration": 1.0,
+"texture": ExtResource("idle_35")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("reel_0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("reel_1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("reel_2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("reel_3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("reel_4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("reel_5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("reel_6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("reel_7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("reel_8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("reel_9")
+}, {
+"duration": 1.0,
+"texture": ExtResource("reel_10")
+}, {
+"duration": 1.0,
+"texture": ExtResource("reel_11")
+}, {
+"duration": 1.0,
+"texture": ExtResource("reel_12")
+}, {
+"duration": 1.0,
+"texture": ExtResource("reel_13")
+}, {
+"duration": 1.0,
+"texture": ExtResource("reel_14")
+}, {
+"duration": 1.0,
+"texture": ExtResource("reel_15")
+}, {
+"duration": 1.0,
+"texture": ExtResource("reel_16")
+}, {
+"duration": 1.0,
+"texture": ExtResource("reel_17")
+}, {
+"duration": 1.0,
+"texture": ExtResource("reel_18")
+}, {
+"duration": 1.0,
+"texture": ExtResource("reel_19")
+}, {
+"duration": 1.0,
+"texture": ExtResource("reel_20")
+}, {
+"duration": 1.0,
+"texture": ExtResource("reel_21")
+}, {
+"duration": 1.0,
+"texture": ExtResource("reel_22")
+}, {
+"duration": 1.0,
+"texture": ExtResource("reel_23")
+}, {
+"duration": 1.0,
+"texture": ExtResource("reel_24")
+}, {
+"duration": 1.0,
+"texture": ExtResource("reel_25")
+}, {
+"duration": 1.0,
+"texture": ExtResource("reel_26")
+}, {
+"duration": 1.0,
+"texture": ExtResource("reel_27")
+}, {
+"duration": 1.0,
+"texture": ExtResource("reel_28")
+}, {
+"duration": 1.0,
+"texture": ExtResource("reel_29")
+}, {
+"duration": 1.0,
+"texture": ExtResource("reel_30")
+}, {
+"duration": 1.0,
+"texture": ExtResource("reel_31")
+}, {
+"duration": 1.0,
+"texture": ExtResource("reel_32")
+}, {
+"duration": 1.0,
+"texture": ExtResource("reel_33")
+}, {
+"duration": 1.0,
+"texture": ExtResource("reel_34")
+}, {
+"duration": 1.0,
+"texture": ExtResource("reel_35")
+}],
+"loop": true,
+"name": &"reel",
+"speed": 8.0
+}]

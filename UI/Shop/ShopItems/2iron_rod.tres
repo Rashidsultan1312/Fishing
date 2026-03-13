@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Rod" load_steps=3 format=3 uid="uid://defo7ye8rtmtq"]
+
+[ext_resource type="Script" uid="uid://bq0snpnov4ghe" path="res://UI/Shop/item_resource.gd" id="1_sktib"]
+[ext_resource type="Texture2D" uid="uid://dy4hn13fv3ymh" path="res://Assets/Rods/iron.png" id="2_055y4"]
+
+[resource]
+script = ExtResource("1_sktib")
+item_name = "Iron Rod"
+cost = 250
+texture = ExtResource("2_055y4")
+luck = 0.143
+line_length = 750.0
+sink_speed = 170.0
+tension_bonus = 0.05
+info = "[color=#1E90FF]Blue[/color]            80%
+[color=#FFA500]Orange[/color]       15%
+[color=#FF0000]Red[/color]              5%
+"
+metadata/_custom_type_script = "uid://bq0snpnov4ghe"

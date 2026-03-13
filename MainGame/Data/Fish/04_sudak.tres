@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="FishData" format=3]
+
+[ext_resource type="Script" path="res://MainGame/Data/fish_data.gd" id="1"]
+[ext_resource type="Texture2D" path="res://Assets/Fish/Orange.png" id="2"]
+
+[resource]
+script = ExtResource("1")
+fish_name = "Zander"
+texture = ExtResource("2")
+price = 65
+rarity = 1
+depth_min = 400.0
+depth_max = 900.0
+speed = 140.0
+swim_pattern = 1
+reel_difficulty = 1.3
+flee_on_hook = true
+description = "Bug-eyed paranoid. Sees everything but pretends he doesn't."

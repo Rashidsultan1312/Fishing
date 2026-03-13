@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://ex6dy3wexoc6"]
+
+[ext_resource type="Script" uid="uid://4gmo87ce314v" path="res://UI/Stats/stats.gd" id="1_4bnnw"]
+[ext_resource type="PackedScene" uid="uid://bsllcr00e08bi" path="res://UI/Stats/stats_position.tscn" id="1_exsol"]
+
+[node name="Stats" type="Control" unique_id=627588903]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4bnnw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1583878533]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Container" type="MarginContainer" parent="VBoxContainer" unique_id=1179615435]
+custom_minimum_size = Vector2(0, 1484)
+layout_mode = 2
+theme_override_constants/margin_left = 180
+theme_override_constants/margin_top = 500
+theme_override_constants/margin_right = 180
+theme_override_constants/margin_bottom = 180
+
+[node name="Stats" type="VBoxContainer" parent="VBoxContainer/Container" unique_id=349614990]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="StatPosition" parent="VBoxContainer/Container/Stats" unique_id=402634684 instance=ExtResource("1_exsol")]
+layout_mode = 2
+
+[node name="StatPosition2" parent="VBoxContainer/Container/Stats" unique_id=989655098 instance=ExtResource("1_exsol")]
+layout_mode = 2
+
+[node name="Container2" type="MarginContainer" parent="VBoxContainer" unique_id=1015435410]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 180
+theme_override_constants/margin_top = 132
+theme_override_constants/margin_right = 180
+theme_override_constants/margin_bottom = 100
+
+[node name="Back" type="Button" parent="VBoxContainer/Container2" unique_id=679463823]
+layout_mode = 2
+size_flags_vertical = 3
+
+[connection signal="pressed" from="VBoxContainer/Container2/Back" to="." method="_on_back_pressed"]

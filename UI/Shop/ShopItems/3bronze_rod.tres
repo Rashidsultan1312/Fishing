@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Rod" load_steps=3 format=3 uid="uid://sxqr4ssp4ga3"]
+
+[ext_resource type="Script" uid="uid://bq0snpnov4ghe" path="res://UI/Shop/item_resource.gd" id="1_cppmy"]
+[ext_resource type="Texture2D" uid="uid://dwea84dxutele" path="res://Assets/Rods/bronze.png" id="2_38lel"]
+
+[resource]
+script = ExtResource("1_cppmy")
+item_name = "Bronze Rod"
+cost = 750
+texture = ExtResource("2_38lel")
+luck = 0.286
+line_length = 900.0
+sink_speed = 190.0
+tension_bonus = 0.1
+info = "[color=#1E90FF]Blue[/color]            70%
+[color=#FFA500]Orange[/color]       22%
+[color=#FF0000]Red[/color]              8%
+"
+metadata/_custom_type_script = "uid://bq0snpnov4ghe"

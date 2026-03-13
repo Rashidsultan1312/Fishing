@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Rod" load_steps=3 format=3 uid="uid://befgu4wwwbg5f"]
+
+[ext_resource type="Script" uid="uid://bq0snpnov4ghe" path="res://UI/Shop/item_resource.gd" id="1_2p8ag"]
+[ext_resource type="Texture2D" uid="uid://cwsxstdwe7er7" path="res://Assets/Rods/emerald.png" id="2_u3o7i"]
+
+[resource]
+script = ExtResource("1_2p8ag")
+item_name = "Emerald Rod"
+cost = 2500
+texture = ExtResource("2_u3o7i")
+luck = 0.571
+line_length = 1200.0
+sink_speed = 230.0
+tension_bonus = 0.2
+info = "[color=#1E90FF]Blue[/color]            50%
+[color=#FFA500]Orange[/color]       35%
+[color=#FF0000]Red[/color]              15%
+"
+metadata/_custom_type_script = "uid://bq0snpnov4ghe"

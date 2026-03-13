@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="FishData" format=3]
+
+[ext_resource type="Script" path="res://MainGame/Data/fish_data.gd" id="1"]
+[ext_resource type="Texture2D" path="res://Assets/Fish/Blue.png" id="2"]
+
+[resource]
+script = ExtResource("1")
+fish_name = "Arctic Char"
+texture = ExtResource("2")
+price = 80
+rarity = 1
+depth_min = 150.0
+depth_max = 700.0
+speed = 100.0
+swim_pattern = 1
+reel_difficulty = 0.8
+flee_on_hook = false
+tint = Color(0.6, 0.85, 1.0, 1)
+description = "Thrives in freezing water. Cold-blooded in every sense."

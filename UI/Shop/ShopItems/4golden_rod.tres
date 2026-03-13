@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Rod" format=3 uid="uid://br0m8suey4iyo"]
+
+[ext_resource type="Script" uid="uid://bq0snpnov4ghe" path="res://UI/Shop/item_resource.gd" id="1_v4fsb"]
+[ext_resource type="Texture2D" uid="uid://c3gpd5bd81hbb" path="res://Assets/Rods/gold.png" id="2_40kkw"]
+
+[resource]
+script = ExtResource("1_v4fsb")
+item_name = "Golden Rod"
+cost = 1500
+texture = ExtResource("2_40kkw")
+luck = 0.429
+line_length = 1050.0
+sink_speed = 210.0
+tension_bonus = 0.15
+info = "[color=#1E90FF]Blue[/color]            60%
+[color=#FFA500]Orange[/color]       28%
+[color=#FF0000]Red[/color]              12%
+"
+metadata/_custom_type_script = "uid://bq0snpnov4ghe"

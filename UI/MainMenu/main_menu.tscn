@@ -1,0 +1,211 @@
+[gd_scene load_steps=20 format=3 uid="uid://djslp5wwd8p41"]
+
+[ext_resource type="Script" uid="uid://cbixge4vuybcr" path="res://UI/MainMenu/main_menu.gd" id="1_jld46"]
+[ext_resource type="Shader" uid="uid://ds25pnymew4xa" path="res://Panning.gdshader" id="2_ejg71"]
+[ext_resource type="Texture2D" uid="uid://dfo54k7k0asxt" path="res://UI/Sprites/ShopBG.png" id="3_euymq"]
+[ext_resource type="Texture2D" uid="uid://bfme4ljym4ind" path="res://Assets/Icon.png" id="3_lnp6m"]
+[ext_resource type="FontFile" uid="uid://6cqdfbgomgma" path="res://Assets/Baloo2-ExtraBold.ttf" id="4_euymq"]
+[ext_resource type="Texture2D" uid="uid://blosq7mippnpg" path="res://Assets/Button.png" id="5_2d5va"]
+[ext_resource type="Texture2D" uid="uid://ow6y8ffx0g8s" path="res://Assets/Button_Pressed.png" id="6_6e3uo"]
+[ext_resource type="Script" uid="uid://c2krdy4m8nukl" path="res://UI/MainMenu/ui.gd" id="7_ejg71"]
+[ext_resource type="PackedScene" uid="uid://dy8ci57dh4jv5" path="res://UI/settings.tscn" id="7_iau2q"]
+[ext_resource type="PackedScene" uid="uid://dgc0aodyofct1" path="res://UI/Shop/shop.tscn" id="8_pbebc"]
+[ext_resource type="PackedScene" uid="uid://m3nblnkgt65p" path="res://UI/Fishbook/fishbook.tscn" id="9_fishbook"]
+[ext_resource type="Texture2D" uid="uid://c3m8y7pgkm2y8" path="res://Assets/petal.png" id="11_lnp6m"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ejg71"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2d5va"]
+shader = ExtResource("2_ejg71")
+shader_parameter/pan_speed = Vector2(-0.2, 0.2)
+shader_parameter/tile_scale = Vector2(3, 3)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bddxb"]
+texture = ExtResource("5_2d5va")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iau2q"]
+texture = ExtResource("6_6e3uo")
+
+[sub_resource type="Curve" id="Curve_oa63p"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.195531, 1), 0.0, 0.0, 0, 0, Vector2(0.99999, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_i6yta"]
+curve = SubResource("Curve_oa63p")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ylnuj"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(540, 1000, 1)
+angle_min = -179.2
+angle_max = 212.4
+angular_velocity_min = 6.63998
+angular_velocity_max = 6.63998
+orbit_velocity_min = -0.0369999
+orbit_velocity_max = -0.0369999
+gravity = Vector3(0, 98, 0)
+scale_min = 0.0
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_i6yta")
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jld46")
+
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -361.818
+offset_right = 361.818
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CompressedTexture2D_ejg71")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -2
+material = SubResource("ShaderMaterial_2d5va")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_euymq")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="logo" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -4.91135
+offset_bottom = -1027.91
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_lnp6m")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -347.0
+offset_top = -230.0
+offset_right = 347.0
+offset_bottom = 500.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 42
+
+[node name="Play" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+theme_override_colors/font_outline_color = Color(0.804688, 0.55698, 0.392914, 1)
+theme_override_colors/font_color = Color(0.953125, 0.953125, 0.953125, 1)
+theme_override_constants/outline_size = 49
+theme_override_fonts/font = ExtResource("4_euymq")
+theme_override_font_sizes/font_size = 83
+theme_override_styles/hover = SubResource("StyleBoxTexture_bddxb")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_iau2q")
+theme_override_styles/normal = SubResource("StyleBoxTexture_bddxb")
+text = "Play"
+
+[node name="Shop" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+theme_override_colors/font_outline_color = Color(0.804688, 0.55698, 0.392914, 1)
+theme_override_colors/font_color = Color(0.953125, 0.953125, 0.953125, 1)
+theme_override_constants/outline_size = 49
+theme_override_fonts/font = ExtResource("4_euymq")
+theme_override_font_sizes/font_size = 83
+theme_override_styles/hover = SubResource("StyleBoxTexture_bddxb")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_iau2q")
+theme_override_styles/normal = SubResource("StyleBoxTexture_bddxb")
+text = "Shop"
+
+[node name="Fishbook" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+theme_override_colors/font_outline_color = Color(0.804688, 0.55698, 0.392914, 1)
+theme_override_colors/font_color = Color(0.953125, 0.953125, 0.953125, 1)
+theme_override_constants/outline_size = 49
+theme_override_fonts/font = ExtResource("4_euymq")
+theme_override_font_sizes/font_size = 83
+theme_override_styles/hover = SubResource("StyleBoxTexture_bddxb")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_iau2q")
+theme_override_styles/normal = SubResource("StyleBoxTexture_bddxb")
+text = "Fishbook"
+
+[node name="Setting" type="Button" parent="VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+theme_override_colors/font_outline_color = Color(0.804688, 0.55698, 0.392914, 1)
+theme_override_colors/font_color = Color(0.953125, 0.953125, 0.953125, 1)
+theme_override_constants/outline_size = 49
+theme_override_fonts/font = ExtResource("4_euymq")
+theme_override_font_sizes/font_size = 83
+theme_override_styles/hover = SubResource("StyleBoxTexture_bddxb")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_iau2q")
+theme_override_styles/normal = SubResource("StyleBoxTexture_bddxb")
+text = "Settings"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource("7_ejg71")
+
+[node name="Settings" parent="UI" instance=ExtResource("7_iau2q")]
+unique_name_in_owner = true
+visible = false
+
+[node name="Shop" parent="UI" instance=ExtResource("8_pbebc")]
+unique_name_in_owner = true
+visible = false
+
+[node name="MoneyLabel2" type="MarginContainer" parent="UI/Shop"]
+z_index = 18
+layout_mode = 0
+offset_right = 316.0
+offset_bottom = 126.0
+theme_override_constants/margin_left = 35
+theme_override_constants/margin_top = 35
+
+[node name="Fishbook" parent="UI" instance=ExtResource("9_fishbook")]
+unique_name_in_owner = true
+visible = false
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="UI"]
+position = Vector2(535, 451)
+amount = 64
+texture = ExtResource("11_lnp6m")
+lifetime = 5.0
+process_material = SubResource("ParticleProcessMaterial_ylnuj")
+
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/Shop" to="." method="_on_shop_pressed"]
+[connection signal="pressed" from="VBoxContainer/Fishbook" to="." method="_on_fishbook_pressed"]
+[connection signal="pressed" from="VBoxContainer/Setting" to="." method="_on_setting_pressed"]

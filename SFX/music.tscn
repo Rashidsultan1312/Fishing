@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bnsp3sdjtkdhq"]
+
+[ext_resource type="AudioStream" uid="uid://de2gpstie0jvh" path="res://SFX/BGmusic.mp3" id="1_ukw4f"]
+
+[node name="Music" type="AudioStreamPlayer2D" unique_id=288254181]
+stream = ExtResource("1_ukw4f")
+volume_db = 3.0
+autoplay = true
+bus = &"Music"

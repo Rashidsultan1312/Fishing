@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="FishData" format=3]
+
+[ext_resource type="Script" path="res://MainGame/Data/fish_data.gd" id="1"]
+[ext_resource type="Texture2D" path="res://Assets/Fish/Blue.png" id="2"]
+
+[resource]
+script = ExtResource("1")
+fish_name = "Parrotfish"
+texture = ExtResource("2")
+price = 120
+rarity = 2
+depth_min = 200.0
+depth_max = 800.0
+speed = 110.0
+swim_pattern = 2
+reel_difficulty = 1.2
+flee_on_hook = false
+tint = Color(0.4, 0.9, 0.5, 1)
+description = "Chews coral like popcorn. That beak can crack shells."

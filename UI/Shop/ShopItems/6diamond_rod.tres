@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Rod" format=3 uid="uid://erqwmcdu3w8n"]
+
+[ext_resource type="Script" uid="uid://bq0snpnov4ghe" path="res://UI/Shop/item_resource.gd" id="1_37y8o"]
+[ext_resource type="Texture2D" uid="uid://drnbrkj6ry44r" path="res://Assets/Rods/diamond.png" id="2_pi62n"]
+
+[resource]
+script = ExtResource("1_37y8o")
+item_name = "Diamond Rod"
+cost = 5000
+texture = ExtResource("2_pi62n")
+luck = 0.714
+line_length = 1400.0
+sink_speed = 250.0
+tension_bonus = 0.25
+info = "[color=#1E90FF]Blue[/color]            40%
+[color=#FFA500]Orange[/color]       40%
+[color=#FF0000]Red[/color]              20%
+"
+metadata/_custom_type_script = "uid://bq0snpnov4ghe"

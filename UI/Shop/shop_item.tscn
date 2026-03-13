@@ -1,0 +1,141 @@
+[gd_scene format=3 uid="uid://ba4s0lpws24lr"]
+
+[ext_resource type="Script" uid="uid://cwmp5m2852wyc" path="res://UI/Shop/shop_item.gd" id="1_1ybge"]
+[ext_resource type="Texture2D" uid="uid://bkrldtfh8mcto" path="res://Assets/Rods/amethyst.png" id="3_n7k5l"]
+[ext_resource type="Texture2D" uid="uid://xc1fmndymkql" path="res://Assets/InfoBg.png" id="5_2c8sf"]
+[ext_resource type="FontFile" uid="uid://6cqdfbgomgma" path="res://Assets/Baloo2-ExtraBold.ttf" id="5_a04i2"]
+[ext_resource type="Theme" uid="uid://dwo3us14kl4ok" path="res://UI.tres" id="5_n7k5l"]
+
+[sub_resource type="Gradient" id="Gradient_a04i2"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2c8sf"]
+gradient = SubResource("Gradient_a04i2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a04i2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2c8sf"]
+
+[node name="ShopItem" type="MarginContainer" unique_id=427186763]
+custom_minimum_size = Vector2(720, 1484)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = -742.0
+offset_right = 360.0
+offset_bottom = 742.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1ybge")
+metadata/_edit_vertical_guides_ = [583.0]
+
+[node name="ShopItem" type="VBoxContainer" parent="." unique_id=2096010566]
+custom_minimum_size = Vector2(720, 1484)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Name" type="Label" parent="ShopItem" unique_id=549870070]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("5_n7k5l")
+theme_override_constants/outline_size = 78
+theme_override_font_sizes/font_size = 89
+text = "Wooden Rod"
+horizontal_alignment = 1
+
+[node name="Panel" type="TextureRect" parent="ShopItem" unique_id=1614763687]
+self_modulate = Color(1, 1, 1, 0)
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 3
+texture = SubResource("GradientTexture2D_2c8sf")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ShopItem/Panel" unique_id=2092385958]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_2c8sf")
+
+[node name="Texture" type="TextureRect" parent="ShopItem/Panel" unique_id=761305592]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.82030475
+scale = Vector2(1.305, 1.305)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("3_n7k5l")
+expand_mode = 1
+
+[node name="Buy" type="Button" parent="ShopItem" unique_id=1193601441]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+theme = ExtResource("5_n7k5l")
+
+[node name="Cost" type="Label" parent="ShopItem/Buy" unique_id=732161988]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 1
+theme_override_constants/outline_size = 53
+theme_override_font_sizes/font_size = 105
+text = "1000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ShopItem" unique_id=177071995]
+texture_filter = 1
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 2
+mouse_filter = 0
+texture = ExtResource("5_2c8sf")
+patch_margin_left = 138
+patch_margin_top = 138
+patch_margin_right = 142
+patch_margin_bottom = 137
+
+[node name="Info" type="RichTextLabel" parent="ShopItem/NinePatchRect" unique_id=1611828730]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.9529412, 0.9529412, 0.9529412, 1)
+theme_override_colors/font_outline_color = Color(0.8039216, 0.5568628, 0.39215687, 1)
+theme_override_constants/line_separation = -30
+theme_override_constants/outline_size = 36
+theme_override_fonts/normal_font = ExtResource("5_a04i2")
+theme_override_font_sizes/normal_font_size = 73
+theme_override_styles/normal = SubResource("StyleBoxTexture_a04i2")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2c8sf")
+bbcode_enabled = true
+text = "Blue            25%
+Orange       45%
+Red              55%
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="ShopItem/Buy" to="." method="_on_buy_pressed"]
