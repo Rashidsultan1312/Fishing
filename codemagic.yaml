@@ -13,8 +13,8 @@ workflows:
         GODOT_TEMPL_VERSION_DIR: "4.6.1.stable"
         EXPORT_PRESET: "iOS"
 
-        APPSTORE_KEY_ID: "DM9K282293"
-        APPSTORE_ISSUER_ID: "5ebc71f2-b25e-468f-8525-3831601298cf"
+        APPSTORE_KEY_ID: "GPTK9WVB7R"
+        APPSTORE_ISSUER_ID: "dc5635b4-0837-42bc-870b-8717f69b578d"
 
       ios_signing:
         provisioning_profiles:
@@ -98,7 +98,7 @@ workflows:
               <string>manual</string>
               <key>provisioningProfiles</key>
               <dict>
-                  <key>com.fishinghunt.kront</key>
+                  <key>com.sm.fishinghunt</key>
                   <string>FHK</string>
               </dict>
           </dict>
