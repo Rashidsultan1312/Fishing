@@ -4,7 +4,7 @@ const FILE_PATH: String = "user://Data.json"
 var bought_fishing_rods : Array[bool] = [false,false,false,false,false,false,false,false,false]
 var current_equipped_rod : int = 0
 var save_data: Dictionary = {
-	"Money" : 999990,
+	"Money" : 0,
 	"Luck" : 0.0,
 	"CAN_VIBRATE" : true,
 	"SFX" : 50.0,
