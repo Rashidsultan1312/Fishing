@@ -98,7 +98,7 @@ workflows:
               <string>manual</string>
               <key>provisioningProfiles</key>
               <dict>
-                  <key>com.sm.fishinghunt</key>
+                  <key>com.fishinghunt.kront</key>
                   <string>FHK</string>
               </dict>
           </dict>
