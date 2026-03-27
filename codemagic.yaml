@@ -16,405 +16,103 @@ workflows:
         APPSTORE_KEY_ID: "DM9K282293"
         APPSTORE_ISSUER_ID: "5ebc71f2-b25e-468f-8525-3831601298cf"
 
-        # ОЖИДАЕМЫЕ значения для диагностики
-        APP_BUNDLE_ID: "com.fishinghunt.kront"
-        PROFILE_NAME: "FHK"
-        EXPORT_METHOD: "app-store-connect"
-
       ios_signing:
         provisioning_profiles:
           - FHK
 
     scripts:
-      - name: Global debug info
-        script: |
-          set -euxo pipefail
-
-          echo "================ GLOBAL DEBUG INFO ================"
-          echo "Date: $(date)"
-          echo "PWD: $(pwd)"
-          echo "CM_BUILD_DIR: ${CM_BUILD_DIR:-<empty>}"
-          echo "HOME: $HOME"
-          echo "User: $(whoami)"
-          echo "macOS: $(sw_vers || true)"
-          echo "Xcode path: $(xcode-select -p || true)"
-          echo "Xcode version:"
-          xcodebuild -version || true
-          echo "==================================================="
-
-      - name: Debug environment variables
-        script: |
-          set -euxo pipefail
-
-          echo "================ ENV DEBUG ================"
-          echo "GODOT_VERSION=${GODOT_VERSION:-<empty>}"
-          echo "GODOT_TEMPL_VERSION_DIR=${GODOT_TEMPL_VERSION_DIR:-<empty>}"
-          echo "EXPORT_PRESET=${EXPORT_PRESET:-<empty>}"
-          echo "APPSTORE_KEY_ID=${APPSTORE_KEY_ID:-<empty>}"
-          echo "APPSTORE_ISSUER_ID=${APPSTORE_ISSUER_ID:-<empty>}"
-          echo "APP_BUNDLE_ID=${APP_BUNDLE_ID:-<empty>}"
-          echo "PROFILE_NAME=${PROFILE_NAME:-<empty>}"
-          echo "EXPORT_METHOD=${EXPORT_METHOD:-<empty>}"
-
-          echo "ASC_PRIVATE_KEY present?:"
-          if [ -n "${ASC_PRIVATE_KEY:-}" ]; then
-            echo "YES"
-            echo "ASC_PRIVATE_KEY length: ${#ASC_PRIVATE_KEY}"
-          else
-            echo "NO"
-          fi
-
-          echo "List selected env keys:"
-          env | sort | grep -E '^(CM_|XCODE_|APPSTORE_|ASC_|GODOT_|EXPORT_|APP_|PROFILE_)' || true
-          echo "=========================================="
-
       - name: Install dependencies
         script: |
-          set -euxo pipefail
           brew install curl unzip || true
 
       - name: Download Godot
         script: |
-          set -euxo pipefail
-
+          set -e
           mkdir -p tools
           cd tools
 
-          echo "Downloading Godot ${GODOT_VERSION}"
           curl -L -o godot.zip \
-            "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}/Godot_v${GODOT_VERSION}_macos.universal.zip"
-
-          echo "Downloaded file:"
-          ls -lah godot.zip
+            https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}/Godot_v${GODOT_VERSION}_macos.universal.zip
 
           unzip -o godot.zip
           chmod +x Godot*.app/Contents/MacOS/Godot*
 
-          echo "Tools directory contents:"
-          find . -maxdepth 4 -print
-
       - name: Install export templates
         script: |
-          set -euxo pipefail
+          set -e
           cd tools
 
-          echo "Downloading export templates ${GODOT_VERSION}"
           curl -L -o templates.tpz \
-            "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}/Godot_v${GODOT_VERSION}_export_templates.tpz"
-
-          echo "Downloaded templates archive:"
-          ls -lah templates.tpz
+            https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}/Godot_v${GODOT_VERSION}_export_templates.tpz
 
           TEMPL_DIR="$HOME/Library/Application Support/Godot/export_templates/${GODOT_TEMPL_VERSION_DIR}"
           mkdir -p "$TEMPL_DIR"
 
           unzip -o templates.tpz
-          echo "Templates extracted:"
-          find templates -maxdepth 3 -print || true
-
           mv templates/* "$TEMPL_DIR/"
-
-          echo "Installed templates dir:"
-          find "$TEMPL_DIR" -maxdepth 3 -print || true
-
-      - name: Debug project files before export
-        script: |
-          set -euxo pipefail
-
-          echo "================ PROJECT FILES BEFORE EXPORT ================"
-          pwd
-          ls -lah
-          echo
-          echo "Top-level tree:"
-          find . -maxdepth 3 -print
-          echo
-          echo "Looking for export_presets.cfg:"
-          find . -name "export_presets.cfg" -print
-
-          if [ -f "export_presets.cfg" ]; then
-            echo "----- export_presets.cfg -----"
-            cat export_presets.cfg
-            echo "------------------------------"
-          fi
-
-          echo "Looking for project.godot:"
-          find . -name "project.godot" -print
-
-          if [ -f "project.godot" ]; then
-            echo "----- project.godot (first 250 lines) -----"
-            sed -n '1,250p' project.godot
-            echo "-------------------------------------------"
-          fi
-
-          echo "============================================================"
 
       - name: Export iOS project
         script: |
-          set -euxo pipefail
-
+          set -e
           mkdir -p build/ios
 
           GODOT_BIN=$(find tools -type f -path "*Godot*.app/Contents/MacOS/*" | head -n 1)
 
-          echo "Resolved GODOT_BIN: ${GODOT_BIN:-<empty>}"
-          test -n "$GODOT_BIN"
-          test -f "$GODOT_BIN"
-
-          echo "Godot version:"
-          "$GODOT_BIN" --version || true
-
-          echo "Exporting with preset: ${EXPORT_PRESET}"
           "$GODOT_BIN" --headless \
-            --verbose \
             --path . \
             --export-release "${EXPORT_PRESET}" \
             build/ios
 
-          echo "=============== AFTER EXPORT ==============="
-          pwd
-          echo "Build tree:"
-          find build -maxdepth 6 -print
-
-          echo "Searching for Xcode project:"
-          find build -name "*.xcodeproj" -print || true
-
-          echo "Searching for plist files:"
-          find build -name "*.plist" -print || true
-
-          echo "Searching for pbxproj files:"
-          find build -name "project.pbxproj" -print || true
-          echo "==========================================="
-
-      - name: Debug signing assets before build
+      - name: Build IPA
         script: |
-          set -euxo pipefail
+          set -e
 
-          echo "================ SIGNING DEBUG ================"
-
-          echo "--- Keychains ---"
-          security list-keychains || true
-          security default-keychain || true
-
-          echo "--- Code signing identities ---"
-          security find-identity -v -p codesigning || true
-
-          echo "--- All certificates (summary) ---"
-          security find-certificate -a -Z -p ~/Library/Keychains/login.keychain-db 2>/dev/null | head -n 20 || true
-
-          echo "--- Provisioning profiles dir ---"
-          ls -lah "$HOME/Library/MobileDevice/Provisioning Profiles" || true
-
-          echo "--- Decode provisioning profiles ---"
-          PROFILE_DIR="$HOME/Library/MobileDevice/Provisioning Profiles"
-          if [ -d "$PROFILE_DIR" ]; then
-            for f in "$PROFILE_DIR"/*.mobileprovision; do
-              [ -e "$f" ] || continue
-              echo
-              echo "##### PROFILE FILE: $f #####"
-              security cms -D -i "$f" > /tmp/profile.plist || true
-
-              echo "--- Name ---"
-              /usr/libexec/PlistBuddy -c "Print :Name" /tmp/profile.plist || true
-
-              echo "--- UUID ---"
-              /usr/libexec/PlistBuddy -c "Print :UUID" /tmp/profile.plist || true
-
-              echo "--- TeamIdentifier ---"
-              /usr/libexec/PlistBuddy -c "Print :TeamIdentifier:0" /tmp/profile.plist || true
-
-              echo "--- TeamName ---"
-              /usr/libexec/PlistBuddy -c "Print :TeamName" /tmp/profile.plist || true
-
-              echo "--- CreationDate ---"
-              /usr/libexec/PlistBuddy -c "Print :CreationDate" /tmp/profile.plist || true
-
-              echo "--- ExpirationDate ---"
-              /usr/libexec/PlistBuddy -c "Print :ExpirationDate" /tmp/profile.plist || true
-
-              echo "--- Application Identifier ---"
-              /usr/libexec/PlistBuddy -c "Print :Entitlements:application-identifier" /tmp/profile.plist || true
-
-              echo "--- aps-environment ---"
-              /usr/libexec/PlistBuddy -c "Print :Entitlements:aps-environment" /tmp/profile.plist || true
-
-              echo "--- get-task-allow ---"
-              /usr/libexec/PlistBuddy -c "Print :Entitlements:get-task-allow" /tmp/profile.plist || true
-
-              echo "--- ProvisionedDevices (if any) ---"
-              /usr/libexec/PlistBuddy -c "Print :ProvisionedDevices" /tmp/profile.plist || true
-
-              echo "--- DeveloperCertificates count ---"
-              /usr/libexec/PlistBuddy -c "Print :DeveloperCertificates" /tmp/profile.plist || true
-            done
-          fi
-
-          echo "================================================"
-
-      - name: Build IPA with maximum diagnostics
-        script: |
-          set -euxo pipefail
-
-          echo "================ BUILD IPA START ================"
-
-          echo "--- Locate Xcode project ---"
           XCODEPROJ=$(find build -name "*.xcodeproj" | head -n 1)
-          echo "Using project: ${XCODEPROJ:-<empty>}"
-          test -n "$XCODEPROJ"
-          test -d "$XCODEPROJ"
-
-          PBXPROJ="$XCODEPROJ/project.pbxproj"
-          echo "PBXPROJ path: ${PBXPROJ:-<empty>}"
-          test -f "$PBXPROJ"
-
-          echo "--- Xcode project tree ---"
-          find "$(dirname "$XCODEPROJ")" -maxdepth 3 -print || true
-
-          echo "--- Extract product / bundle refs from pbxproj ---"
-          grep -nE "PRODUCT_BUNDLE_IDENTIFIER|DEVELOPMENT_TEAM|CODE_SIGN_STYLE|PROVISIONING_PROFILE|PROVISIONING_PROFILE_SPECIFIER|CODE_SIGN_IDENTITY|PRODUCT_NAME" "$PBXPROJ" || true
-
-          echo "--- Detect scheme ---"
-          xcodebuild -list -project "$XCODEPROJ" || true
+          echo "Using project: $XCODEPROJ"
 
           SCHEME=$(xcodebuild -list -project "$XCODEPROJ" \
             | awk '/Schemes:/{flag=1;next} flag && NF{print; exit}' \
             | xargs)
 
-          echo "Using scheme: ${SCHEME:-<empty>}"
-          test -n "$SCHEME"
+          echo "Using scheme: $SCHEME"
 
-          echo "--- Apply provisioning profiles via Codemagic helper ---"
           xcode-project use-profiles --project "$XCODEPROJ"
 
-          echo "--- Show build settings BEFORE archive ---"
-          xcodebuild \
-            -project "$XCODEPROJ" \
-            -scheme "$SCHEME" \
-            -showBuildSettings > /tmp/buildsettings.txt || true
-
-          echo "----- Key signing-related build settings -----"
-          grep -E "PRODUCT_BUNDLE_IDENTIFIER|DEVELOPMENT_TEAM|CODE_SIGN|PROVISIONING_PROFILE|PROVISIONING_PROFILE_SPECIFIER|CODE_SIGN_STYLE|INFOPLIST_FILE|PRODUCT_NAME" /tmp/buildsettings.txt || true
-          echo "---------------------------------------------"
-
-          REAL_BUNDLE_ID=$(grep -m1 "PRODUCT_BUNDLE_IDENTIFIER" /tmp/buildsettings.txt | awk -F= '{print $2}' | xargs || true)
-          REAL_TEAM_ID=$(grep -m1 "DEVELOPMENT_TEAM" /tmp/buildsettings.txt | awk -F= '{print $2}' | xargs || true)
-          REAL_PROFILE_SPECIFIER=$(grep -m1 "PROVISIONING_PROFILE_SPECIFIER" /tmp/buildsettings.txt | awk -F= '{print $2}' | xargs || true)
-          REAL_CODE_SIGN_IDENTITY=$(grep -m1 "CODE_SIGN_IDENTITY" /tmp/buildsettings.txt | awk -F= '{print $2}' | xargs || true)
-          REAL_CODE_SIGN_STYLE=$(grep -m1 "CODE_SIGN_STYLE" /tmp/buildsettings.txt | awk -F= '{print $2}' | xargs || true)
-          REAL_INFOPLIST=$(grep -m1 "INFOPLIST_FILE" /tmp/buildsettings.txt | awk -F= '{print $2}' | xargs || true)
-
-          echo "Resolved REAL_BUNDLE_ID=${REAL_BUNDLE_ID:-<empty>}"
-          echo "Resolved REAL_TEAM_ID=${REAL_TEAM_ID:-<empty>}"
-          echo "Resolved REAL_PROFILE_SPECIFIER=${REAL_PROFILE_SPECIFIER:-<empty>}"
-          echo "Resolved REAL_CODE_SIGN_IDENTITY=${REAL_CODE_SIGN_IDENTITY:-<empty>}"
-          echo "Resolved REAL_CODE_SIGN_STYLE=${REAL_CODE_SIGN_STYLE:-<empty>}"
-          echo "Resolved REAL_INFOPLIST=${REAL_INFOPLIST:-<empty>}"
-
-          echo "--- Compare expected vs actual ---"
-          echo "Expected APP_BUNDLE_ID=${APP_BUNDLE_ID}"
-          echo "Actual   REAL_BUNDLE_ID=${REAL_BUNDLE_ID:-<empty>}"
-
-          echo "Expected PROFILE_NAME=${PROFILE_NAME}"
-          echo "Actual   REAL_PROFILE_SPECIFIER=${REAL_PROFILE_SPECIFIER:-<empty>}"
-
-          if [ -n "${REAL_BUNDLE_ID:-}" ] && [ "${REAL_BUNDLE_ID}" != "${APP_BUNDLE_ID}" ]; then
-            echo "WARNING: Bundle ID mismatch!"
-          fi
-
-          echo "--- Dump Info.plist if found ---"
-          if [ -n "${REAL_INFOPLIST:-}" ] && [ -f "$REAL_INFOPLIST" ]; then
-            echo "Info.plist path exists directly: $REAL_INFOPLIST"
-            /usr/libexec/PlistBuddy -c "Print" "$REAL_INFOPLIST" || true
-          elif [ -n "${REAL_INFOPLIST:-}" ] && [ -f "$CM_BUILD_DIR/$REAL_INFOPLIST" ]; then
-            echo "Info.plist path exists under CM_BUILD_DIR: $CM_BUILD_DIR/$REAL_INFOPLIST"
-            /usr/libexec/PlistBuddy -c "Print" "$CM_BUILD_DIR/$REAL_INFOPLIST" || true
-          else
-            echo "Info.plist not resolved directly from build settings"
-            find . -name "Info.plist" -print || true
-          fi
-
-          echo "--- Archive project ---"
           xcodebuild \
             -project "$XCODEPROJ" \
             -scheme "$SCHEME" \
             -configuration Release \
             -sdk iphoneos \
             -archivePath "$CM_BUILD_DIR/App.xcarchive" \
-            archive \
-            -destination generic/platform=iOS \
-            | tee /tmp/xcodebuild_archive.log
+            archive
 
-          echo "--- Archive contents ---"
-          find "$CM_BUILD_DIR/App.xcarchive" -maxdepth 4 -print || true
-
-          echo "--- App inside archive ---"
-          APP_PATH=$(find "$CM_BUILD_DIR/App.xcarchive/Products/Applications" -maxdepth 1 -name "*.app" | head -n 1 || true)
-          echo "APP_PATH=${APP_PATH:-<empty>}"
-
-          if [ -n "${APP_PATH:-}" ] && [ -d "$APP_PATH" ]; then
-            echo "--- codesign details ---"
-            codesign -dvvv "$APP_PATH" || true
-
-            echo "--- embedded.mobileprovision ---"
-            if [ -f "$APP_PATH/embedded.mobileprovision" ]; then
-              security cms -D -i "$APP_PATH/embedded.mobileprovision" > /tmp/embedded_profile.plist || true
-              /usr/libexec/PlistBuddy -c "Print :Name" /tmp/embedded_profile.plist || true
-              /usr/libexec/PlistBuddy -c "Print :UUID" /tmp/embedded_profile.plist || true
-              /usr/libexec/PlistBuddy -c "Print :Entitlements:application-identifier" /tmp/embedded_profile.plist || true
-              /usr/libexec/PlistBuddy -c "Print :TeamIdentifier:0" /tmp/embedded_profile.plist || true
-            else
-              echo "No embedded.mobileprovision found"
-            fi
-
-            echo "--- archive app Info.plist ---"
-            if [ -f "$APP_PATH/Info.plist" ]; then
-              /usr/libexec/PlistBuddy -c "Print :CFBundleIdentifier" "$APP_PATH/Info.plist" || true
-              /usr/libexec/PlistBuddy -c "Print :CFBundleShortVersionString" "$APP_PATH/Info.plist" || true
-              /usr/libexec/PlistBuddy -c "Print :CFBundleVersion" "$APP_PATH/Info.plist" || true
-            fi
-
-            echo "--- entitlements extracted from signed app ---"
-            codesign -d --entitlements :- "$APP_PATH" || true
-          fi
-
-          echo "--- Generate exportOptions.plist ---"
           cat > exportOptions.plist <<EOF
           <?xml version="1.0" encoding="UTF-8"?>
-          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+          "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
           <plist version="1.0">
           <dict>
               <key>method</key>
-              <string>${EXPORT_METHOD}</string>
+              <string>app-store-connect</string>
               <key>signingStyle</key>
               <string>manual</string>
               <key>provisioningProfiles</key>
               <dict>
-                  <key>${APP_BUNDLE_ID}</key>
-                  <string>${PROFILE_NAME}</string>
+                  <key>com.fishinghunt.kront</key>
+                  <string>FHK</string>
               </dict>
           </dict>
           </plist>
           EOF
 
-          echo "--- exportOptions.plist contents ---"
-          cat exportOptions.plist
-
-          echo "--- Export archive ---"
           xcodebuild -exportArchive \
             -archivePath "$CM_BUILD_DIR/App.xcarchive" \
             -exportPath ipa \
-            -exportOptionsPlist exportOptions.plist \
-            | tee /tmp/xcodebuild_export.log
+            -exportOptionsPlist exportOptions.plist
 
-          echo "--- IPA output ---"
-          find ipa -maxdepth 3 -print || true
-
-          echo "================ BUILD IPA END ================"
 
     artifacts:
       - ipa/*.ipa
-      - /tmp/buildsettings.txt
-      - /tmp/xcodebuild_archive.log
-      - /tmp/xcodebuild_export.log
 
     publishing:
       app_store_connect:
